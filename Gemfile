@@ -21,6 +21,7 @@ group :development, :test do
   gem 'minitest-rails'
   gem 'miniskirt'
   gem 'backbone-on-rails'
+  gem 'twitter-bootstrap-rails'
 end
 
 group :production do
