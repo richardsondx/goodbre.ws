@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_length_of :password, :minimum => 6
   validates_presence_of :password_confirmation
+
+  recommends :beers
 end
