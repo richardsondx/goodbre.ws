@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation
   has_secure_password
 
-  validates_exclusion_of :username, :in => %w( admin superuser root goodbrews guest )
+  validates_exclusion_of :username, :in => %w( admin superuser root goodbrews guest sign_up sign_in sign_out )
   validates_format_of :username, :with => /^\w+$/
   validates_uniqueness_of :username, :case_sensitive => false, :message => "has been taken."
   validates_length_of :username, :within => 4..20
@@ -17,4 +16,12 @@ class User < ActiveRecord::Base
   validates_presence_of :password_confirmation
 
   recommends :beers
+
+  def to_param
+    self.username.parameterize
+  end
+
+  def self.from_param(param)
+    self.where(:username => param).first
+  end
 end

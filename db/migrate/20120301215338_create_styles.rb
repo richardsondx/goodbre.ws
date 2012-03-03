@@ -3,6 +3,7 @@ class CreateStyles < ActiveRecord::Migration
     create_table :styles do |t|
       t.string     :name
       t.text       :description
+      t.string     :permalink
       t.timestamps
     end
 

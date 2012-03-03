@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'mysql2'
 gem 'haml'
+gem 'backbone-rails'
+gem 'twitter-bootstrap-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'recommendable', git: 'git://github.com/davidcelis/recommendable.git'
-gem 'thinking-sphinx'
-gem 'omniauth'
+gem 'recommendable', :git => 'git://github.com/davidcelis/recommendable.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,8 +20,6 @@ group :development, :test do
   gem 'minitest'
   gem 'minitest-rails'
   gem 'miniskirt'
-  gem 'backbone-on-rails'
-  gem 'twitter-bootstrap-rails'
 end
 
 group :production do

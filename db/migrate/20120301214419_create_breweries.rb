@@ -4,6 +4,7 @@ class CreateBreweries < ActiveRecord::Migration
       t.string     :name
       t.text       :description
       t.boolean    :closed
+      t.string     :permalink
       t.timestamps
     end
 
