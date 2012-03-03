@@ -2,7 +2,7 @@ window.Goodbrews =
   Models: {}
   Collections: {}
   Views: {}
-  init: -> alert 'Hello from Backbone!'
+  init: -> return false #alert 'Hello from Backbone!'
 
 $(document).ready ->
   Goodbrews.init()
