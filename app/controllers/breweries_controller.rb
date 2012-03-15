@@ -1,4 +1,7 @@
 class BreweriesController < ApplicationController
+  # GET /breweries/:id
+  # GET /breweries/:id.json
+  # GET /breweries/:id.xml
   def show
     @brewery = Brewery.from_param(params[:id])
 
@@ -9,6 +12,8 @@ class BreweriesController < ApplicationController
     end
   end
 
+  # GET /breweries/:id/beers.json
+  # GET /breweries/:id/beers.xml
   def beers
     @brewery = Brewery.from_param(params[:id])
     @beers = @brewery.beers
