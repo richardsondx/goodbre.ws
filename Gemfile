@@ -5,6 +5,7 @@ gem 'mysql2'
 gem 'haml'
 gem 'jquery-rails'
 gem 'backbone-rails'
+gem 'twitter-bootstrap-rails'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'recommendable', :git => 'git://github.com/davidcelis/recommendable.git'
 
