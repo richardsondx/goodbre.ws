@@ -1,9 +1,10 @@
 Goodbrews::Application.routes.draw do
-  root :to => 'pages#dashboard', :constraints => lambda { request.session[:user_id] }
+  root :to => 'pages#dashboard', :constraints => lambda { |request| request.session[:user_id] }
   root :to => 'pages#welcome' 
 
   controller :pages do
     get 'dashboard'
+    get 'welcome'
     get 'about'
     get 'privacy'
     get 'terms'
