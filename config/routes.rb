@@ -1,5 +1,25 @@
 Goodbrews::Application.routes.draw do
-  root :to => 'users_sessions#new' 
+  root :to => 'pages#dashboard', :constraints => lambda { request.session[:user_id] }
+  root :to => 'pages#welcome' 
+
+  controller :pages do
+    get 'dashboard'
+    get 'about'
+    get 'privacy'
+    get 'terms'
+  end
+
+  # Authentication and account settings.
+  get    'account/sign_up'  => 'users#new'
+  get    'account/settings' => 'users#edit'
+  put    'account'          => 'users#update'
+  delete 'account'          => 'users#destroy'
+
+  controller :user_sessions do
+    get  'account/sign_in'  => :new,     :as => :sign_in_users
+    post 'account/sign_in'  => :create,  :as => :sign_in_users
+    post 'account/sign_out' => :destroy, :as => :sign_out_users
+  end
 
   resources :users, :only => [:show, :create] do
     member do
@@ -9,23 +29,7 @@ Goodbrews::Application.routes.draw do
       get 'stashed'
       get 'similar'
     end
-
-    collection do
-      get 'sign_up' => :new
-    end
   end
-
-  # Authentication.
-  controller :user_sessions do
-    get  'users/sign_in'  => :new
-    post 'users/sign_in'  => :create
-    post 'users/sign_out' => :destroy
-  end
-
-  # Account settings for users.
-  get    'account/edit' => 'users#edit'
-  put    'account'      => 'users#update'
-  delete 'account'      => 'users#destroy'
 
   resources :breweries, :only => :show do
     get 'beers', :on => :member
