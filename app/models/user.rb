@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  validates_exclusion_of :username, :in => %w( admin superuser root goodbrews guest sign_up sign_in sign_out )
+  validates_exclusion_of :username, :in => %w( admin superuser root goodbrews guest )
   validates_format_of :username, :with => /^\w+$/
   validates_uniqueness_of :username, :case_sensitive => false, :message => "has been taken."
   validates_length_of :username, :within => 4..20
