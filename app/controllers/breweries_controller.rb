@@ -3,7 +3,7 @@ class BreweriesController < ApplicationController
   # GET /breweries/:id.json
   # GET /breweries/:id.xml
   def show
-    @brewery = Brewery.from_param(params[:id])
+    @brewery = Brewery.from_param params[:id]
 
     respond_to do |format|
       format.html # show.html.haml
@@ -15,7 +15,7 @@ class BreweriesController < ApplicationController
   # GET /breweries/:id/beers.json
   # GET /breweries/:id/beers.xml
   def beers
-    @brewery = Brewery.from_param(params[:id])
+    @brewery = Brewery.from_param params[:id]
     @beers = @brewery.beers
 
     respond_to do |format|

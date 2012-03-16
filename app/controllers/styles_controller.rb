@@ -3,7 +3,7 @@ class StylesController < ApplicationController
   # GET /styles/:id.json
   # GET /styles/:id.xml
   def show
-    @style = Style.from_param(params[:id])
+    @style = Style.from_param params[:id]
 
     respond_to do |format|
       format.html # show.html.haml
@@ -15,7 +15,7 @@ class StylesController < ApplicationController
   # GET /styles/:id/beers.json
   # GET /styles/:id/beers.xml
   def beers
-    @style = Style.from_param(params[:id])
+    @style = Style.from_param params[:id]
     @beers = @style.beers
 
     respond_to do |format|

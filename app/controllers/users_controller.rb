@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users/:id.json
   # GET /users/:id.xml
   def show
-    @user = User.from_param(params[:id])
+    @user = User.from_param params[:id]
 
     respond_to do |format|
       format.html # show.html.haml
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/:id/liked.json
   # GET /users/:id/liked.xml
   def liked
-    @user = User.from_param(params[:id])
+    @user = User.from_param params[:id]
     @beers = @user.liked
 
     respond_to do |format|
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   # GET /users/:id/disliked.json
   # GET /users/:id/disliked.xml
   def disliked
-    @user = User.from_param(params[:id])
+    @user = User.from_param params[:id]
     @beers = @user.disliked
 
     respond_to do |format|
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   # GET /users/:id/ignored.json
   # GET /users/:id/ignored.xml
   def ignored
-    @user = User.from_param(params[:id])
+    @user = User.from_param params[:id]
     @beers = @user.ignored
 
     respond_to do |format|
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   # GET /users/:id/stashed.json
   # GET /users/:id/stashed.xml
   def stashed
-    @user = User.from_param(params[:id])
+    @user = User.from_param params[:id]
     @beers = @user.stashed
 
     respond_to do |format|
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   # GET /users/:id/similar.json
   # GET /users/:id/similar.xml
   def similar
-    @user = User.from_param(params[:id])
+    @user = User.from_param params[:id] 
     @users = @user.similar_raters
 
     respond_to do |format|
@@ -91,7 +91,7 @@ class UsersController < ApplicationController
   # POST /users.json
   # POST /users.xml
   def create
-    @user = User.new(params[:user])
+    @user = User.new params[:user]
 
     respond_to do |format|
       if @user.save
@@ -116,7 +116,7 @@ class UsersController < ApplicationController
   # PUT /account.xml
   def update
     respond_to do |format|
-      if current_user.update_attributes(params[:user])
+      if current_user.update_attributes params[:user]
         format.html { redirect_to current_user }
         format.json { head :ok }
         format.xml  { head :ok }
