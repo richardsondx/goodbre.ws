@@ -116,6 +116,9 @@ class UsersController < ApplicationController
   # PUT /account.xml
   def update
     respond_to do |format|
+      # Controller should handle attribute whitelisting, not the Model.
+      params[:user].slice!(:email, :password, :password_confirmation)
+
       if current_user.update_attributes params[:user]
         format.html { redirect_to current_user }
         format.json { head :ok }
