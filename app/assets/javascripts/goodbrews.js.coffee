@@ -1,8 +1,10 @@
-window.Goodbrews =
+window.App =
   Models: {}
   Collections: {}
   Views: {}
-  init: -> return false #alert 'Hello from Backbone!'
-
-$(document).ready ->
-  Goodbrews.init()
+  
+  currentUser: (user) ->
+    if user
+      @user = new App.Models.User(user)
+    else
+      return @user

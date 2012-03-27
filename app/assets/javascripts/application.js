@@ -18,4 +18,4 @@
 
 //= require goodbrews
 
-//= require_tree ./goodbrews/
+//= require_tree ./app/
