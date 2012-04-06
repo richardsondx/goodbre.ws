@@ -22,8 +22,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
@@ -38,8 +38,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
@@ -54,8 +54,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
@@ -70,8 +70,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
@@ -86,8 +86,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
@@ -102,8 +102,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
@@ -118,8 +118,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
@@ -134,8 +134,8 @@ class BeersController < ApplicationController
         format.json { head :ok }
         format.xml  { head :ok }
       else
-        format.json { render :json => { :status => false }, :status => :bad_request }
-        format.xml  { render :xml  => { :status => false }, :status => :bad_request }
+        format.json { head :unprocessable_entity }
+        format.xml  { head :unprocessable_entity }
       end
     end
   end
