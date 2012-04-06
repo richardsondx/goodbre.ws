@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'mysql2'
+gem 'pg'
 gem 'haml'
 gem 'jquery-rails'
 gem 'ember-rails'
