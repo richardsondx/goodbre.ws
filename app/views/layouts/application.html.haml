@@ -3,35 +3,70 @@
 %html
   %head
     %meta{:charset => 'utf-8'}
+    %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1.0'}
     %title goodbre.ws
     = stylesheet_link_tag    'application', :media => 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
 
-  %body
-    #top-bar
-      #top-bar-left
-        #logo= logo_link
-      #top-bar-right
-        #search
-        #nav
-      .clear
+  %body.container-fluid
+    .navbar
+      .navbar-inner
+        #header.container
+          .pull-left
+            #logo.brand= link_to image_tag("logo_sm.png"), root_path
+          .pull-right
+            %ul.nav
+              - if signed_in?
+                %li Signed in as
+                %li= link_to current_user.username, user_path(current_user.username)
+                %li.divider-vertical
+                %li= link_to "Sign out", sign_out_users_path
+              - else
+                %li= link_to "Sign in", sign_in_users_path
+                %li= link_to "Register", account_sign_up_path
+              %form.navbar-search#search
+                %input.search-query{:type => 'text', :placeholder => 'Search'}
 
-    #container
-      = yield
+    / .row-fluid
+    /   .span12
+    /     #header.container
+    /       .row-fluid
+    /         .span8
+    /           #logo
+    /             = link_to image_tag("logo_sm.png"), root_path
+    /         .span2
+    /           #current-user
+    /             - if signed_in?
+    /               Signed in as
+    /               = link_to current_user.username, user_path(current_user.username)
+    /               |
+    /               = link_to "Sign out", sign_out_users_path
+    /             - else
+    /               = link_to "Sign in", sign_in_users_path
+    /               or
+    /               = link_to "Register", account_sign_up_path
+    /         .span2
+    /           #search SEARCH
 
-    #footer
-      © 
-      %a{ :href => '/' } goodbre.ws
-      2011-2012 • 
-      %a{ :href => '/about' } About
-      •
-      %a{ :href => '/privacy' } Privacy
-      •
-      %a{ :href => '/terms' } Terms
-      •
-      <a href="https://twitter.com/goodbrews" class="twitter-follow-button" data-show-count="false">Follow @goodbrews</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    #main-body
+      .row-fluid
+        = yield
+
+    .navbar
+      .navbar-inner
+        #footer.container
+          © 
+          %a{ :href => '/' } goodbre.ws
+          2011-2012 • 
+          %a{ :href => '/about' } About
+          •
+          %a{ :href => '/privacy' } Privacy
+          •
+          %a{ :href => '/terms' } Terms
+          •
+          <a href="https://twitter.com/goodbrews" class="twitter-follow-button" data-show-count="false">Follow @goodbrews</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
     - if notice
       #bottom.notice= notice

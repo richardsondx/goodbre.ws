@@ -13,9 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require underscore
-//= require backbone
+//= require ember
 
-//= require goodbrews
+//= require app
 
-//= require_tree ./app/
+//= require_tree ./app/models
+//= require_tree ./app/controllers
+//= require_tree ./app/views
+//= require_tree ./app/templates

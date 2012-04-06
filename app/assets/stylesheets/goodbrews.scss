@@ -1,0 +1,28 @@
+@import 'includes/constants';
+
+body {
+  background-color: $green;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 12px;
+}
+
+#sidebar, #content, .navbar, .navbar-inner {
+  @include rounded;
+  background-color: white;
+}
+
+#footer {
+  padding: 10px;
+}
+
+#sidebar, #content {
+  padding: 20px;
+}
+
+#header {
+  margin: 20px 0px;
+}
+
+#main-body {
+  margin: 0 0 20px 0;
+}

@@ -1,3 +1,4 @@
-class App.Models.Style extends Backbone.Model
-  urlRoot: '/styles'
-  paramRoot: 'styles'
+class App.Models.Style extends Ember.Object
+  name: null
+  description: null
+  permalink: null
