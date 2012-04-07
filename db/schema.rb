@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(:version => 20120301221310) do
     t.text     "description"
     t.boolean  "closed"
     t.string   "permalink"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "region"
+    t.string   "zip"
+    t.string   "country"
+    t.string   "website"
+    t.string   "phone"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

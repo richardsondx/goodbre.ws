@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json { render :json => @user, :except => :password_digest }
-      format.xml  { render :xml  => @user, :except => :password_digest }
+      format.json { render :json => @user, :except => [:password_digest, :auth_token] }
+      format.xml  { render :xml  => @user, :except => [:password_digest, :auth_token] }
     end
   end
 
@@ -21,8 +21,10 @@ class UsersController < ApplicationController
     @beers = @user.liked
 
     respond_to do |format|
-      format.json { render :json => @beers }
-      format.xml  { render :xml  => @beers }
+      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
+      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
     end
   end
 
@@ -33,8 +35,10 @@ class UsersController < ApplicationController
     @beers = @user.disliked
 
     respond_to do |format|
-      format.json { render :json => @beers }
-      format.xml  { render :xml  => @beers }
+      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
+      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
     end
   end
 
@@ -45,8 +49,10 @@ class UsersController < ApplicationController
     @beers = @user.ignored
 
     respond_to do |format|
-      format.json { render :json => @beers }
-      format.xml  { render :xml  => @beers }
+      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
+      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
     end
   end
 
@@ -57,8 +63,10 @@ class UsersController < ApplicationController
     @beers = @user.stashed
 
     respond_to do |format|
-      format.json { render :json => @beers }
-      format.xml  { render :xml  => @beers }
+      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
+      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
+                                                          :style => { :only => [:name, :permalink] } } }
     end
   end
 
