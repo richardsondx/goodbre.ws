@@ -20,6 +20,9 @@ Goodbrews::Application.routes.draw do
   put    'account/password_resets/:id' => 'password_resets#update'
   post   'account/password_resets'     => 'password_resets#create', :as => :password_resets
 
+  # Search.
+  post 'search' => 'searches#search'
+
   controller :user_sessions do
     get  'account/sign_in'  => :new,     :as => :sign_in_users
     post 'account/sign_in'  => :create,  :as => :sign_in_users
