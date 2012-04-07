@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+
   has_secure_password
   validates_length_of :password, :minimum => 6, :on => :create
 
@@ -15,6 +17,10 @@ class User < ActiveRecord::Base
   before_create { generate_token(:auth_token) }
 
   recommends :beers
+
+  gravtastic :filetype => :png,
+             :size => 150,
+             :default => "http://goodbre.ws/images/user.png"
 
   def to_param
     username.parameterize

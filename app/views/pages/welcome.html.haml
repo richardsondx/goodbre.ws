@@ -32,6 +32,7 @@
     
     .tabbable
       %ul.nav.nav-tabs
-        %li.active= link_to "Top 10 Beers", "#top-beers"
-      #top-beers
-        Sup, son. Top beers go here.
+        %li.active= link_to "Top 10 Beers", "#top-beers", 'data-toggle' => 'tab'
+      .tab-content
+        #top-beers.tab-pane.active
+          Sup, son. Top beers go here.

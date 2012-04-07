@@ -1,7 +1,27 @@
-#sidebar
-  #gravatar
-    = image_tag current_user.gravatar_url
-  = link_to 'Edit your settings', account_edit_path
+.span3
+  #sidebar
+    #gravatar= image_tag current_user.gravatar_url
+    = link_to 'Edit your settings', account_settings_path
 
-#main-content
-  %h1 Your Dashboard
+.span9
+  #content
+    %h1 Your Dashboard
+
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active= link_to "Top 10 Beers", "#top-beers", 'data-toggle' => 'tab'
+        %li= link_to "Recommendations", "#recommendations", 'data-toggle' => 'tab'
+        %li= link_to "Likes", "#likes", 'data-toggle' => 'tab'
+        %li= link_to "Dislikes", "#dislikes", 'data-toggle' => 'tab'
+        %li= link_to "Saved for Later", "#saved", 'data-toggle' => 'tab'
+      .tab-content
+        #top-beers.tab-pane.active
+          Top beers go here.
+        #recommendations.tab-pane
+          Recommendations go here.
+        #likes.tab-pane
+          Liked beers go here.
+        #dislikes.tab-pane
+          Disliked beers go here.
+        #saved.tab-pane
+          Beers saved for later go here.
