@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  validates_length_of :password, :minimum => 6, :on => :create
 
   validates_exclusion_of :username, :in => %w( admin superuser root goodbrews guest )
   validates_format_of :username, :with => /^\w+$/
@@ -10,9 +11,6 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_uniqueness_of :email, :case_sensitive => false, :message => "is in use."
   validates_presence_of :email
-
-  validates_presence_of :password, :on => :create, :length => { :minimum => 6 },
-                                   :confirmation => true
 
   before_create { generate_token(:auth_token) }
 
@@ -40,6 +38,6 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_login(login)
-    where('username = ? OR email = ?', login, login)
+    where("username = '#{login}' OR email = '#{login}'").first
   end
 end

@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
 
   # POST /account/sign_in
   def create
-    user = User.find_by_login(params[:login]).first
+    user = User.find_by_login params[:login]
 
     if user && user.authenticate(params[:password])
       cookies.permanent[:auth_token] = user.auth_token
@@ -19,6 +19,6 @@ class UserSessionsController < ApplicationController
   # POST /account/sign_out
   def destroy
     cookies.delete :auth_token
-    redirect_to root_path, :notice => "Signed out."
+    redirect_to welcome_path, :notice => "Signed out."
   end
 end

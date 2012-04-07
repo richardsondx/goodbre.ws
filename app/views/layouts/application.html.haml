@@ -23,7 +23,7 @@
                   Signed in as
                   = link_to current_user.username, user_path(current_user.username)
                   |
-                  = link_to "Sign out", sign_out_users_path
+                  = link_to "Sign out", sign_out_users_path, 'data-method' => :post
                 - else
                   = link_to "Sign in", sign_in_users_path
                   or

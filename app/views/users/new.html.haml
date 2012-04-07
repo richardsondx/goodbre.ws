@@ -8,6 +8,14 @@
     = form_for @user, :html => { :class => 'well' } do |f|
       %h1 Sign Up for goodbre.ws
 
+      - if @user.errors.any?
+        .errors
+          %h2 The following problems were found:
+      
+          %ul
+            - @user.errors.full_messages.each do |message|
+              %li= message
+
       %p
         = f.text_field :email, :placeholder => 'email'
       %p
