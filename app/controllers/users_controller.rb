@@ -95,7 +95,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, :notice => 'Successfully registered!'}
+        cookies.permanent[:auth_token] = @user.auth_token
+        
+        format.html { redirect_to dashboard_path, :notice => 'Welcome to goodbre.ws!'}
         format.json { render :json => @user, :except => :password_digest, :status => :created, :location => @user }
         format.xml  { render :xml  => @user, :except => :password_digest, :status => :created, :location => @user }
       else

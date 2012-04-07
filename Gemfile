@@ -21,6 +21,8 @@ group :development, :test do
   gem 'minitest'
   gem 'minitest-rails'
   gem 'miniskirt'
+  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :production do

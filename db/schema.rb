@@ -96,11 +96,14 @@ ActiveRecord::Schema.define(:version => 20120301221310) do
   add_index "styles", ["name"], :name => "index_styles_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "email",           :null => false
-    t.string   "username",        :null => false
-    t.string   "password_digest", :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "email",                  :null => false
+    t.string   "username",               :null => false
+    t.string   "password_digest",        :null => false
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
