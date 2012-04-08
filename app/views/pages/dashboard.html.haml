@@ -11,11 +11,11 @@
     
     .tabbable
       %ul.nav.nav-tabs
-        %li.active= link_to "Top 10 Beers", "#top-beers", 'data-toggle' => 'tab'
-        %li= link_to "Recommendations", "#recommendations", 'data-toggle' => 'tab'
-        %li= link_to "Likes", "#likes", 'data-toggle' => 'tab'
-        %li= link_to "Dislikes", "#dislikes", 'data-toggle' => 'tab'
-        %li= link_to "Saved for Later", "#saved", 'data-toggle' => 'tab'
+        %li.active= link_to 'Top 10 Beers', '#top-beers', 'data-toggle' => 'tab'
+        %li= link_to 'Recommendations', '#recommendations', 'data-toggle' => 'tab'
+        %li= link_to 'Likes', '#likes', 'data-toggle' => 'tab'
+        %li= link_to 'Dislikes', '#dislikes', 'data-toggle' => 'tab'
+        %li= link_to 'Saved for Later', '#saved', 'data-toggle' => 'tab'
       .tab-content
         #top-beers.tab-pane.active
           Top beers go here.

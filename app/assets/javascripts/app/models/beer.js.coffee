@@ -1,7 +1,7 @@
-class App.Models.Beer extends Ember.Object
-  name: null
-  abv: null
-  description: null
-  discontinued: null
-  brewery: null
-  style: null
+class App.Models.Beer extends Backbone.Model
+  url: ->
+    '/beers/' + this.get('id')
+
+class App.Collections.BeersCollection extends Backbone.Collection
+  model: App.Models.Beer
+  url: '/beers'

@@ -1,5 +1,7 @@
-class App.Models.Brewery extends Ember.Object
-  name: null
-  description: null
-  closed: null
-  permalink: null
+class App.Models.Brewery extends Backbone.Model
+  url: ->
+    '/breweries/' + this.get('permalink');
+
+class App.Collections.BreweriesCollection extends Backbone.Collection
+  model: App.Models.Brewery
+  url: '/breweries'

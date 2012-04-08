@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json { render :json => @user, :except => [:password_digest, :auth_token] }
-      format.xml  { render :xml  => @user, :except => [:password_digest, :auth_token] }
+      format.json { render :json => @user, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
+      format.xml  { render :xml  => @user, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
     end
   end
 
@@ -77,8 +77,8 @@ class UsersController < ApplicationController
     @users = @user.similar_raters
 
     respond_to do |format|
-      format.json { render :json => @users }
-      format.xml  { render :xml  => @users }
+      format.json { render :json => @users, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
+      format.xml  { render :xml  => @users, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
     end
   end
 

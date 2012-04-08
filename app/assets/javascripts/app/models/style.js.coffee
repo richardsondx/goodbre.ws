@@ -1,4 +1,3 @@
-class App.Models.Style extends Ember.Object
-  name: null
-  description: null
-  permalink: null
+class App.Models.Style extends Backbone.Model
+  url: ->
+    '/styles/' + this.get('permalink')
