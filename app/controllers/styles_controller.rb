@@ -7,8 +7,8 @@ class StylesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json { render :json => @style }
-      format.xml  { render :xml  => @style }
+      format.json { render_for_api :public, :json => @style }
+      format.xml  { render_for_api :public, :xml  => @style }
     end
   end
 
@@ -19,7 +19,7 @@ class StylesController < ApplicationController
     @beers = @style.beers
 
     respond_to do |format|
-      format.json { render :json => @beers }
-      format.xml  { render :xml  => @beers }
+      format.json { render_for_api :style, :json => @beers }
+      format.xml  { render_for_api :style, :xml  => @beers }
     end
 end

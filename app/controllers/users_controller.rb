@@ -9,8 +9,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json { render :json => @user, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
-      format.xml  { render :xml  => @user, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
+      format.json { render_for_api :public, :json => @user }
+      format.xml  { render_for_api :public, :xml  => @user }
     end
   end
 
@@ -18,13 +18,11 @@ class UsersController < ApplicationController
   # GET /users/:id/liked.xml
   def liked
     @user = User.from_param params[:id]
-    @beers = @user.liked
+    @beers = @user.liked_beers
 
     respond_to do |format|
-      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
-      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
+      format.json { render_for_api :public, :json => @beers }
+      format.xml  { render_for_api :public, :xml  => @beers }
     end
   end
 
@@ -32,13 +30,11 @@ class UsersController < ApplicationController
   # GET /users/:id/disliked.xml
   def disliked
     @user = User.from_param params[:id]
-    @beers = @user.disliked
+    @beers = @user.disliked_beers
 
     respond_to do |format|
-      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
-      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
+      format.json { render_for_api :public, :json => @beers }
+      format.xml  { render_for_api :public, :xml  => @beers }
     end
   end
 
@@ -46,13 +42,11 @@ class UsersController < ApplicationController
   # GET /users/:id/ignored.xml
   def ignored
     @user = User.from_param params[:id]
-    @beers = @user.ignored
+    @beers = @user.ignored_beers
 
     respond_to do |format|
-      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
-      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
+      format.json { render_for_api :public, :json => @beers }
+      format.xml  { render_for_api :public, :xml  => @beers }
     end
   end
 
@@ -60,13 +54,11 @@ class UsersController < ApplicationController
   # GET /users/:id/stashed.xml
   def stashed
     @user = User.from_param params[:id]
-    @beers = @user.stashed
+    @beers = @user.stashed_beers
 
     respond_to do |format|
-      format.json { render :json => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
-      format.xml  { render :xml  => @beers, :include => { :brewery => { :only => [:name, :permalink] },
-                                                          :style => { :only => [:name, :permalink] } } }
+      format.json { render_for_api :public, :json => @beers }
+      format.xml  { render_for_api :public, :xml  => @beers }
     end
   end
 
@@ -77,8 +69,8 @@ class UsersController < ApplicationController
     @users = @user.similar_raters
 
     respond_to do |format|
-      format.json { render :json => @users, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
-      format.xml  { render :xml  => @users, :except => [:password_digest, :auth_token, :password_reset_token, :password_reset_sent_at] }
+      format.json { render_for_api :public, :json => @users }
+      format.xml  { render_for_api :public, :xml  => @users }
     end
   end
 
@@ -90,8 +82,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.haml
-      format.json { render :json => @user }
-      format.xml  { render :xml  => @user }
+      format.json { render_for_api :public, :json => @user }
+      format.xml  { render_for_api :public, :xml  => @user }
     end
   end
 
@@ -106,8 +98,8 @@ class UsersController < ApplicationController
         cookies.permanent[:auth_token] = @user.auth_token
         
         format.html { redirect_to dashboard_path, :notice => 'Welcome to goodbre.ws!'}
-        format.json { render :json => @user, :except => :password_digest, :status => :created, :location => @user }
-        format.xml  { render :xml  => @user, :except => :password_digest, :status => :created, :location => @user }
+        format.json { render_for_api :public, :json => @user, :status => :created, :location => @user }
+        format.xml  { render_for_api :public, :xml  => @user, :status => :created, :location => @user }
       else
         format.html { render :action => :new }
         format.json { render :json => @user.errors, :status => :unprocessable_entity }

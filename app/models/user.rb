@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
              :size => 150,
              :default => "http://goodbre.ws/images/user.png"
 
+  acts_as_api
+  include Api::User
+
   def to_param
     username.parameterize
   end

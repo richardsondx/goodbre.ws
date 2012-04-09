@@ -7,8 +7,8 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.haml
-      format.json { render :json => @brewery }
-      format.xml  { render :xml  => @brewery }
+      format.json { render_for_api :public, :json => @brewery }
+      format.xml  { render_for_api :public, :xml  => @brewery }
     end
   end
 
@@ -19,8 +19,8 @@ class BreweriesController < ApplicationController
     @beers = @brewery.beers
 
     respond_to do |format|
-      format.json { render :json => @beers }
-      format.xml  { render :xml  => @beers }
+      format.json { render_for_api :brewery, :json => @beers }
+      format.xml  { render_for_api :brewery, :xml  => @beers }
     end
   end
 end

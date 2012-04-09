@@ -3,6 +3,9 @@ class Style < ActiveRecord::Base
   has_many :beers
   before_create :set_permalink
 
+  acts_as_api
+  include Api::Style
+
   def to_param
     self.permalink
   end

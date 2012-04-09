@@ -7,8 +7,8 @@ class BeersController < ApplicationController
     @beer = Beer.find params[:id]
 
     respond_to do |format|
-      format.json { render :json => @beer, :include => :style }
-      format.xml  { render :xml  => @beer, :include => :style }
+      format.json { render_for_api :public, :json => @beer }
+      format.xml  { render_for_api :public, :xml  => @beer }
     end
   end
 
